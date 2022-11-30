@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Platforms>AnyCPU;x64;ARM64</Platforms>
+		<NoWarn>$(NoWarn);CA1416</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="BenchmarkDotNet" Version="0.13.2" />
+		<PackageReference Include="CommunityToolkit.HighPerformance" Version="8.0.0" />
+		<PackageReference Include="ComputeSharp" Version="2.0.0" />
+	</ItemGroup>
+
+</Project>
