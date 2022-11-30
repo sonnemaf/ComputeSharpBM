@@ -5,7 +5,7 @@ BenchmarkRunner.Run<BM>();
 return;
 
 using var bm = new BM();
-bm.Size = 1000;
+bm.Size = 10;
 bm.Iterations = 2;
 bm.Setup();
 
@@ -13,6 +13,7 @@ bm.Setup();
 Formatting.PrintMatrix(bm.MyArray, bm.Size, bm.Size, "BEFORE");
 
 bm.ComputeSharpBM();
+
 //bm.ParallelBM();
 //bm.CommunityToolkitParallelHelper();
 
