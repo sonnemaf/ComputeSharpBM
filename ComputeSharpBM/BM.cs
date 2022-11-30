@@ -3,9 +3,10 @@ using CommunityToolkit.HighPerformance.Helpers;
 using ComputeSharp;
 
 [MemoryDiagnoser]
-public class BM {
+public class BM : IDisposable {
 
     public float[] MyArray = Array.Empty<float>();
+    private ReadWriteBuffer<float> _gpuBuffer = null!;
 
     //[Params(10, 100,1000)]
     [Params(1000)]
@@ -16,21 +17,24 @@ public class BM {
 
     [GlobalSetup]
     public void Setup() {
-        MyArray = Enumerable.Range(1, Size * Size).Select(static i => (float)i).ToArray();
+        MyArray = Enumerable.Range(1, Size * Size).Select(static i => (float)i / 5).ToArray();
+
+        // Create the graphics buffer
+        _gpuBuffer = GraphicsDevice.GetDefault().AllocateReadWriteBuffer<float>(Size * Size);
     }
 
     [Benchmark]
     public void ComputeSharpBM() {
-        // Create the graphics buffer
-        using ReadWriteBuffer<float> gpuBuffer = GraphicsDevice.GetDefault().AllocateReadWriteBuffer(MyArray);
+        // Write the data in
+        _gpuBuffer.CopyFrom(MyArray);
         
         // Run the shader
         for (int i = 0; i < Iterations; i++) {
-            GraphicsDevice.GetDefault().For(MyArray.Length, new MultiplyByTwo(gpuBuffer));
+            GraphicsDevice.GetDefault().For(MyArray.Length, new MultiplyByTwo(_gpuBuffer));
         }
-        
+
         // Get the data back
-        gpuBuffer.CopyTo(MyArray);
+        _gpuBuffer.CopyTo(MyArray);
     }
 
     [Benchmark]
@@ -47,4 +51,8 @@ public class BM {
         }
     }
 
+    [GlobalCleanup]
+    public void Dispose() {
+        _gpuBuffer.Dispose();
+    }
 }
