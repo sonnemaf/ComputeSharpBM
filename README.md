@@ -26,11 +26,8 @@ AMD Ryzen 9 3900X, 1 CPU, 24 logical and 12 physical cores
 
 
 ```
-|                         Method | Size | Iterations |      Mean |     Error |    StdDev |    Gen0 | Allocated |
-|------------------------------- |----- |----------- |----------:|----------:|----------:|--------:|----------:|
-|                 **ComputeSharpBM** | **1000** |         **10** |  **2.805 ms** | **0.0197 ms** | **0.0174 ms** |       **-** |   **7.41 KB** |
-|                     ParallelBM | 1000 |         10 |  3.059 ms | 0.0532 ms | 0.0692 ms |  7.8125 |  62.76 KB |
-| CommunityToolkitParallelHelper | 1000 |         10 |  1.496 ms | 0.0297 ms | 0.0330 ms |  3.9063 |  42.48 KB |
-|                 **ComputeSharpBM** | **1000** |        **100** | **17.511 ms** | **0.3474 ms** | **0.4755 ms** |       **-** |   **7.42 KB** |
-|                     ParallelBM | 1000 |        100 | 30.295 ms | 0.4477 ms | 0.6421 ms | 62.5000 |  629.2 KB |
-| CommunityToolkitParallelHelper | 1000 |        100 | 14.092 ms | 0.0764 ms | 0.0638 ms | 46.8750 |  429.1 KB |
+|                         Method | Width | Height | Iterations |      Mean |     Error |    StdDev | Allocated |
+|------------------------------- |------ |------- |----------- |----------:|----------:|----------:|----------:|
+|                 ComputeSharpBM |  3840 |   2160 |         10 | 14.897 ms | 0.2685 ms | 0.2511 ms |   7.41 KB |
+|                     ParallelBM |  3840 |   2160 |         10 | 21.249 ms | 0.3579 ms | 0.4778 ms |  61.94 KB |
+| CommunityToolkitParallelHelper |  3840 |   2160 |         10 |  8.751 ms | 0.1696 ms | 0.1503 ms |  53.67 KB |
