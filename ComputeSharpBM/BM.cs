@@ -8,29 +8,32 @@ public class BM : IDisposable {
     public float[] MyArray = Array.Empty<float>();
     private ReadWriteBuffer<float> _gpuBuffer = null!;
 
-    //[Params(10, 100,1000)]
-    [Params(1000)]
-    public int Size;
+    [Params(1920 * 2)]
+    public int Width;
+    
+    [Params(1080 * 2)]
+    public int Height;
 
-    [Params(10, 100)]
+    [Params(10)]
     public int Iterations;
 
     [GlobalSetup]
     public void Setup() {
-        MyArray = Enumerable.Range(1, Size * Size).Select(static i => (float)i / 5).ToArray();
+        MyArray = Enumerable.Range(1, Width * Height).Select(static i => (float)i / 5).ToArray();
 
         // Create the graphics buffer
-        _gpuBuffer = GraphicsDevice.GetDefault().AllocateReadWriteBuffer<float>(Size * Size);
+        _gpuBuffer = GraphicsDevice.GetDefault().AllocateReadWriteBuffer<float>(Width * Height);
     }
 
     [Benchmark]
     public void ComputeSharpBM() {
         // Write the data in
         _gpuBuffer.CopyFrom(MyArray);
-        
+
         // Run the shader
+        var shader = new MultiplyByTwo(_gpuBuffer, this.Width);
         for (int i = 0; i < Iterations; i++) {
-            GraphicsDevice.GetDefault().For(MyArray.Length, new MultiplyByTwo(_gpuBuffer));
+            GraphicsDevice.GetDefault().For(Width, Height, shader);
         }
 
         // Get the data back

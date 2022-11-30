@@ -5,12 +5,13 @@ BenchmarkRunner.Run<BM>();
 return;
 
 using var bm = new BM();
-bm.Size = 10;
+bm.Width = 12;
+bm.Height = 10;
 bm.Iterations = 2;
 bm.Setup();
 
 // Print the initial matrix
-Formatting.PrintMatrix(bm.MyArray, bm.Size, bm.Size, "BEFORE");
+Formatting.PrintMatrix(bm.MyArray, bm.Width, bm.Height, "BEFORE");
 
 bm.ComputeSharpBM();
 
@@ -18,4 +19,4 @@ bm.ComputeSharpBM();
 //bm.CommunityToolkitParallelHelper();
 
 // Print the updated matrix
-Formatting.PrintMatrix(bm.MyArray, bm.Size, bm.Size, "AFTER");
+Formatting.PrintMatrix(bm.MyArray, bm.Width, bm.Height, "AFTER");
