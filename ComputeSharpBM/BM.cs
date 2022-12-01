@@ -54,6 +54,20 @@ public class BM : IDisposable {
         }
     }
 
+    [Benchmark]
+    public void VectorBM()
+    {
+        var vector = MyArray.AsSpan().AsVector();
+
+        for (int i = 0; i < Iterations; i++)
+        {
+            for (int vectorIndex = 0; vectorIndex < vector.Length; vectorIndex++)
+            {
+                vector[vectorIndex] *= 2.0f;
+            }
+        }
+    }
+    
     [GlobalCleanup]
     public void Dispose() {
         _gpuBuffer.Dispose();
