@@ -1,5 +1,5 @@
 # ComputeSharpBM
-Benchmark comparing ComputeSharp against Parallel.For and the CommunityToolkit.HighPerformance ParallelHelper and SIMD
+[Benchmark](https://github.com/sonnemaf/ComputeSharpBM/blob/master/ComputeSharpBM/BM.cs) comparing [ComputeSharp](https://github.com/Sergio0694/ComputeSharp) against [Parallel.For](https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.parallel.for) and the [CommunityToolkit.HighPerformance ParallelHelper](https://learn.microsoft.com/en-us/windows/communitytoolkit/high-performance/parallelhelper) and [SIMD](https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector)
 
 ```
            Card name: NVIDIA GeForce GTX 1060
