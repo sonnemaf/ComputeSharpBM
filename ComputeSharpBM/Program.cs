@@ -14,9 +14,10 @@ bm.Setup();
 Formatting.PrintMatrix(bm.MyArray, bm.Width, bm.Height, "BEFORE");
 
 bm.ComputeSharpBM();
-
 //bm.ParallelBM();
 //bm.CommunityToolkitParallelHelper();
+//bm.vectorBM();
+//bm.ParallelHelperVectorBM();
 
 // Print the updated matrix
 Formatting.PrintMatrix(bm.MyArray, bm.Width, bm.Height, "AFTER");

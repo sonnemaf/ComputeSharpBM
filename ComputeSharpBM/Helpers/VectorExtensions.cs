@@ -12,4 +12,5 @@ public static class VectorExtensions
     {
         return MemoryMarshal.Cast<T, Vector<T>>(span);
     }
+
 }
