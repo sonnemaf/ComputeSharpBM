@@ -64,3 +64,36 @@ AMD Ryzen 9 3900X, 1 CPU, 24 logical and 12 physical cores
 |       ParallelHelperBM |  3840 |   2160 |         10 |  8.623 ms |  0.25 |   56384 B |
 |               VectorBM |  3840 |   2160 |         10 | 27.631 ms |  0.79 |      15 B |
 | ParallelHelperVectorBM |  3840 |   2160 |         10 |  9.123 ms |  0.26 |   51860 B |
+
+# My Intel Laptop
+
+```
+GPU 1
+
+	NVIDIA GeForce RTX 2060 with Max-Q Design
+
+	Driver version:	31.0.15.1700
+	Driver date:	8/2/2022
+	DirectX version:	12 (FL 12.1)
+	Physical location:	PCI bus 1, device 0, function 0
+```
+
+``` ini
+
+BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
+Intel Core i7-10875H CPU 2.30GHz, 1 CPU, 16 logical and 8 physical cores
+.NET SDK=7.0.100
+  [Host]     : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
+  DefaultJob : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
+
+
+```
+|                 Method | Width | Height | Iterations |     Mean |   Median | Ratio | Allocated |
+|----------------------- |------ |------- |----------- |---------:|---------:|------:|----------:|
+|                ArrayBM |  3840 |   2160 |         10 | 37.47 ms | 36.64 ms |  1.00 |      37 B |
+|         ComputeSharpBM |  3840 |   2160 |         10 | 24.36 ms | 24.35 ms |  0.65 |    7599 B |
+|             ParallelBM |  3840 |   2160 |         10 | 33.37 ms | 33.26 ms |  0.90 |   46811 B |
+|       ParallelHelperBM |  3840 |   2160 |         10 | 18.99 ms | 18.80 ms |  0.50 |   47969 B |
+|               VectorBM |  3840 |   2160 |         10 | 20.20 ms | 20.08 ms |  0.53 |      15 B |
+| ParallelHelperVectorBM |  3840 |   2160 |         10 | 18.66 ms | 18.64 ms |  0.50 |   47119 B |
+
