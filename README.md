@@ -32,3 +32,35 @@ Intel Core i7-8650U CPU 1.90GHz (Kaby Lake R), 1 CPU, 8 logical and 4 physical c
 | CommunityToolkitParallelHelper |  3840 |   2160 |         10 | 26.43 ms | 0.501 ms | 0.514 ms |   30022 B |
 |                       VectorBM |  3840 |   2160 |         10 | 34.43 ms | 0.554 ms | 0.432 ms |      34 B |
 
+
+
+# My AMD Desktop
+```
+
+	NVIDIA GeForce GTX 1660 SUPER
+
+	Driver version:	30.0.14.7121
+	Driver date:	6/29/2021
+	DirectX version:	12 (FL 12.1)
+	Physical location:	PCI bus 10, device 0, function 0
+```
+
+
+``` ini
+
+BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
+AMD Ryzen 9 3900X, 1 CPU, 24 logical and 12 physical cores
+.NET SDK=7.0.100
+  [Host]     : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
+  DefaultJob : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
+
+
+```
+|                 Method | Width | Height | Iterations |      Mean | Ratio | Allocated |
+|----------------------- |------ |------- |----------- |----------:|------:|----------:|
+|                ArrayBM |  3840 |   2160 |         10 | 34.795 ms |  1.00 |      34 B |
+|         ComputeSharpBM |  3840 |   2160 |         10 | 14.737 ms |  0.42 |    7592 B |
+|             ParallelBM |  3840 |   2160 |         10 | 26.670 ms |  0.77 |   63286 B |
+|       ParallelHelperBM |  3840 |   2160 |         10 |  8.623 ms |  0.25 |   56384 B |
+|               VectorBM |  3840 |   2160 |         10 | 27.631 ms |  0.79 |      15 B |
+| ParallelHelperVectorBM |  3840 |   2160 |         10 |  9.123 ms |  0.26 |   51860 B |
